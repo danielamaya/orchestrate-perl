@@ -20,6 +20,18 @@ get '/' => sub {
 app->start;
 ```
 
+## TODO
+
+1. Allow the ability to specify ref to find method.
+1. Create the following methods:
+  * list_refs
+  * list
+  * prev/next to iterrate over a resultset
+  * related methods
+  * event methods
+1. Get should return a resultset object.
+1. Resultset objects should have relation methods.
+
 ## Installation
 
   All you need is a oneliner, it takes less than a minute.
