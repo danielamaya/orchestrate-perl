@@ -34,9 +34,9 @@ app->start;
 
 ## Installation
 
-  All you need is a oneliner, it takes less than a minute.
+  When this is on CPAN all you will need is a oneliner:
 
     $ curl -L cpanmin.us | perl - -n Orchestrate
 
-  We recommend the use of a [Perlbrew](http://perlbrew.pl) environment.
+  Recommend the use of a [Perlbrew](http://perlbrew.pl) environment.
 
