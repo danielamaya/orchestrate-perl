@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+use Mojolicious::Lite;
+use Mojolicious::Plugin::Orchestrate;
+
+# Documentation browser under "/perldoc"
+plugin Orchestrate => {
+  collections => ['ass','umass','crap'],
+  secret      => 'niggercock'
+};
+
+get '/' => sub {
+  my $c = shift;
+
+  my %shit = (
+    shit => 'dick'
+  );
+
+  $c->collection('get');
+  $c->render(text => 'index');
+};
+
+app->start;
