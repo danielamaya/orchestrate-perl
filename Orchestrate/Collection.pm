@@ -41,23 +41,32 @@ sub delete_collection {
 }
 
 sub find {
-  my ($self, $key, $ref) = (shift, shift);
+  my ($self, $key, $ref) = @_;
+
   my $orchestrate = $self->orchestrate;
-
   my $ua = $orchestrate->ua;
-  my $url = $orchestrate->secret_url;
+  my $url = $orchestrate->secret_url->clone;
 
-  say $url;
-  # $url->path($self->name.'/'.$key);
+  if ( $ref ) {
+    $url->path($self->name.'/'.$key.'/ref/'.$ref);
+  }
+  else {
+    $url->path($self->name.'/'.$key);
+  }
+  my $tx = $ua->get($url);
 
-  # if ( $ref ) {
-  #   $url->path($self->name.'/'.$key.'/ref/'.$ref);
-  # }
-  # else {
-  #   $url->path($self->name.'/'.$key);
-  # }
+  my $data = $tx->res->json;
+  my ($res_key,$res_ref) = (split('/',$tx->res->headers->content_location))[3,5];
+  my $etag = $tx->res->headers->etag;
 
-  # return $ua->get($url)->res->json;
+  return Orchestrate::Collection::Relationship->new(
+    orchestrate => $orchestrate, 
+    collection => $self, 
+    key => $res_key, 
+    ref => $res_ref,
+    data => $data,
+    etag => $etag,
+  );
 
 }
 
