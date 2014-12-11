@@ -4,6 +4,7 @@ use Mojo::Base -base;
 use Carp 'croak';
 use Data::Dumper;
 use Mojo::JSON qw(encode_json);
+use Orchestrate::Collection::ResultSet;
 
 has [qw(orchestrate name)];
 
@@ -40,15 +41,23 @@ sub delete_collection {
 }
 
 sub find {
-  my ($self, $key) = (shift, shift);
+  my ($self, $key, $ref) = (shift, shift);
   my $orchestrate = $self->orchestrate;
 
   my $ua = $orchestrate->ua;
-  my $url = Mojo::URL->new($orchestrate->base_url)->userinfo($orchestrate->secret);
+  my $url = $orchestrate->secret_url;
 
-  $url->path($self->name.'/'.$key);
+  say $url;
+  # $url->path($self->name.'/'.$key);
 
-  return $ua->get($url)->res->json;
+  # if ( $ref ) {
+  #   $url->path($self->name.'/'.$key.'/ref/'.$ref);
+  # }
+  # else {
+  #   $url->path($self->name.'/'.$key);
+  # }
+
+  # return $ua->get($url)->res->json;
 
 }
 
@@ -60,9 +69,13 @@ sub search {
   my $url = Mojo::URL->new($orchestrate->base_url)->userinfo($orchestrate->secret);
 
   $url->path($self->name);
-  $url->query($args);
+  $url->query(query => $args);
 
-  return $ua->get($url)->res->json;
+  my $data = $ua->get($url)->res->json;
+  my @columns = keys %{ $data->{results}->[0]->{value} };
+  my $total = $data->{total_count};
+  my $next = $data->{next};
+  return Orchestrate::Collection::ResultSet->new(orchestrate => $orchestrate, collection => $self, data => $data->{results}, column_names => \@columns, total => $total, next_url => $next);
 }
 
 sub create {
@@ -86,16 +99,18 @@ sub create {
 
   my $tx = $ua->build_tx($method => $url => { 'Content-Type' => 'application/json' }, json => $data);
 
-  if ( $ref and $ref eq 'false' ) {
-    $tx->res->headers->add('If-None-Match' => '*');
+  if ( $ref and $ref eq 'false' and $method eq 'put' ) {
+    $tx->req->headers->add('If-None-Match' => '*');
   }
-  elsif ( $ref ) {
-    $tx->res->headers->add('If-Match' => "\"$ref\"");
+  elsif ( $ref and $method eq 'put' ) {
+    $tx->req->headers->add('If-Match' => "\"$ref\"");
   }
 
   $tx = $ua->start($tx);
 
-  print $tx->res->code;
+  my ($res_key,$res_ref) = (split('/',$tx->res->headers->location))[3,5];
+
+  return Orchestrate::Collection::Relationship->new(orchestrate => $orchestrate, collection => $self, key => $res_key, ref => $res_ref);
 
 }
 

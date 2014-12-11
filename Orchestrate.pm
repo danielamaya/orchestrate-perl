@@ -11,6 +11,7 @@ use constant DEBUG => $ENV{ORCHESTRATE_DEBUG} || 0;
 
 has secret          => undef;
 has base_url        => 'https://api.orchestrate.io/v0/';
+has secret_url      => undef;
 has error           => undef;
 has ioloop          => sub { Mojo::IOLoop->new };
 has ua              => sub { Mojo::UserAgent->new };
@@ -36,6 +37,7 @@ sub _build {
   $self->secret($args{secret});
   $self->base_url($args{url}) if $args{url};
   $self->_authenticate;
+  $self->secret_url(Mojo::URL->new($self->base_url)->userinfo($self->secret));
 
   return $self;
 }
