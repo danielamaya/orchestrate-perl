@@ -5,6 +5,7 @@ use Carp 'croak';
 use Data::Dumper;
 use Mojo::JSON qw(encode_json);
 use Orchestrate::Collection::ResultSet;
+use Orchestrate::Collection::Result;
 
 has [qw(orchestrate name)];
 
@@ -56,6 +57,7 @@ sub find {
   my $tx = $ua->get($url);
 
   my $data = $tx->res->json;
+  my @columns = keys %{ $data };
   my ($res_key,$res_ref) = (split('/',$tx->res->headers->content_location))[3,5];
   my $etag = $tx->res->headers->etag;
 
@@ -66,6 +68,7 @@ sub find {
     ref => $res_ref,
     data => $data,
     etag => $etag,
+    column_names => \@columns,
   );
 
 }
@@ -84,7 +87,16 @@ sub search {
   my @columns = keys %{ $data->{results}->[0]->{value} };
   my $total = $data->{total_count};
   my $next = $data->{next};
-  return Orchestrate::Collection::ResultSet->new(orchestrate => $orchestrate, collection => $self, data => $data->{results}, column_names => \@columns, total => $total, next_url => $next);
+
+  return Orchestrate::Collection::ResultSet->new(
+    orchestrate => $orchestrate, 
+    collection => $self, 
+    data => $data->{results}, 
+    column_names => \@columns, 
+    total => $total, 
+    next_url => $next
+  );
+
 }
 
 sub create {
