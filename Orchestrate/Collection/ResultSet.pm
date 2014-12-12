@@ -4,7 +4,7 @@ use Mojo::Base -base;
 use Carp 'croak';
 use Data::Dumper;
 
-has [qw(orchestrate collection data column_names next_url total prev_url)];
+has [qw(orchestrate collection data column_names next_url total)];
 
 sub all {
   my $self = shift;
@@ -34,6 +34,7 @@ sub next {
   my $data = shift @{ $self->data };
 
   if ( $data ) {
+    push @{$self->{prev_data}}, $data;
     return $data;
   }
   elsif ( !$data and $self->next_url ) {
@@ -41,47 +42,24 @@ sub next {
     $data = $orchestrate->ua->get($url)->res->json;
 
     my $ret = shift @{ $data->{results} };
+    push @{$self->{prev_data}}, $ret;
     $self->data($data->{results});
-    $data->{prev} ? $self->prev_url($data->{prev}) : $self->prev_url('');
     $data->{next} ? $self->next_url($data->{next}) : $self->next_url('');
     return $ret;
   }
   else {
+    @{ $self->{prev_data} } = reverse @{ $self->{prev_data} };
     return;
   }
 
 }
 
 sub prev {
-  my $self = shift;
-
-  my $orchestrate = $self->orchestrate;
-  my $data = shift @{ $self->data };
-
-  if ( $data ) {
-    return $data;
-  }
-  elsif ( !$data and $self->prev_url ) {
-    my $url = Mojo::URL->new($self->prev_url)->to_abs($orchestrate->secret_url)->fragment(undef);
-    $data = $orchestrate->ua->get($url)->res->json;
-
-    my $ret = shift @{ $data->{results} };
-    $self->data($data->{results});
-    $data->{prev} ? $self->prev_url($data->{prev}) : $self->prev_url('');
-    $data->{next} ? $self->next_url($data->{next}) : $self->next_url('');
-    return $ret;
-  }
-  else {
-    return;
-  }
-
+  ref $_[0]->{prev_data} ? return pop @{ $_[0]->{prev_data} } : return;
 }
 
 
 sub columns {
-  my $self = shift;
-
-  my @columns = @{$self->column_names};
-  return @columns;
+  return @{ $_[0]->column_names };
 }
 1;
