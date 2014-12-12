@@ -59,10 +59,10 @@ sub find {
   my ($res_key,$res_ref) = (split('/',$tx->res->headers->content_location))[3,5];
   my $etag = $tx->res->headers->etag;
 
-  return Orchestrate::Collection::Relationship->new(
-    orchestrate => $orchestrate, 
-    collection => $self, 
-    key => $res_key, 
+  return Orchestrate::Collection::Result->new(
+    orchestrate => $orchestrate,
+    collection => $self,
+    key => $res_key,
     ref => $res_ref,
     data => $data,
     etag => $etag,
