@@ -185,4 +185,12 @@ sub create_related {
 sub delete_related {
 
 }
+
+sub get_refs {
+  my ($self,%opts) =  shift;
+
+  croak qq{Key required.} unless ($opts{key});
+
+}
+
 1;

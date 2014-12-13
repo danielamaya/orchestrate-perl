@@ -48,7 +48,7 @@ sub create_collection {
 }
 
 sub delete_collection {
-  my $self = shift;
+  my ($self,$name) = shift;
   my $orchestrate = $self->orchestrate;
 
   my $ua = $orchestrate->ua;

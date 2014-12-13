@@ -29,12 +29,22 @@ sub all {
 
 sub next {
   my $self = shift;
-
   my $orchestrate = $self->orchestrate;
+
   my $data = shift @{ $self->data };
 
   if ( $data ) {
     push @{$self->{prev_data}}, $data;
+
+    return Orchestrate::Collection::Result->new(
+        orchestrate  => $orchestrate,
+        collection   => $self,
+        key          => $key,
+        ref          => $res_ref,
+        data         => $data,
+        etag         => $etag,
+        column_names => \@columns,
+    );
     return $data;
   }
   elsif ( !$data and $self->next_url ) {
