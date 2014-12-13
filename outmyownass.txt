@@ -1,0 +1,1268 @@
+$VAR1 = [
+          {
+            'score' => '0.60973584651947',
+            'path' => {
+                      'reftime' => '1411584692409',
+                      'key' => 'V-Ga',
+                      'ref' => 'b89a0784600dfeea',
+                      'collection' => 'games'
+                    },
+            'reftime' => '1411584692409',
+            'value' => {
+                         'rating' => '',
+                         'title' => 'V-Ga',
+                         'platforms' => [
+                                        'Commodore 64'
+                                      ],
+                         'theme' => [
+                                    'Shooter'
+                                  ],
+                         'releasedate' => [
+                                          '1990'
+                                        ],
+                         'images' => [],
+                         'terms' => [],
+                         'developer' => [
+                                        "Magic\x{a0}Disk"
+                                      ],
+                         'specs' => [],
+                         'description' => '',
+                         'genre' => [
+                                    'Action'
+                                  ],
+                         'perspective' => [
+                                          "3rd-Person\x{a0}Perspective",
+                                          'Side-Scrolling'
+                                        ],
+                         'publisher' => [
+                                        "Magic\x{a0}Disk"
+                                      ],
+                         'metaScore' => 0
+                       }
+          },
+          {
+            'score' => '0.589591145515442',
+            'path' => {
+                      'reftime' => '1411522552305',
+                      'key' => 'Boong-Ga Boong-Ga',
+                      'ref' => '20e7003d73c4c382',
+                      'collection' => 'games'
+                    },
+            'value' => {
+                       'platforms' => [],
+                       'title' => 'Boong-Ga Boong-Ga',
+                       'rating' => '',
+                       'images' => undef,
+                       'releasedate' => [],
+                       'theme' => [],
+                       'developer' => [],
+                       'terms' => [],
+                       'specs' => {
+                                  'Arcade' => {}
+                                },
+                       'genre' => [],
+                       'description' => '',
+                       'publisher' => [],
+                       'perspective' => [],
+                       'metaScore' => 0
+                     },
+            'reftime' => '1411522552305'
+          },
+          {
+            'reftime' => '1411521080492',
+            'value' => {
+                       'description' => '',
+                       'genre' => [
+                                  'Action'
+                                ],
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective",
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'publisher' => [
+                                      "SEGA\x{a0}Europe\x{a0}Ltd."
+                                    ],
+                       'releasedate' => [
+                                        'Feb 24, 2012'
+                                      ],
+                       'theme' => [
+                                  "Sci-Fi\x{a0}/\x{a0}Futuristic",
+                                  'Shooter'
+                                ],
+                       'images' => [
+                                   '596c19ea8c2cd96570f3fbf1abb50a4a-Binary Domain-PlayStation 3.png',
+                                   '596c19ea8c2cd96570f3fbf1abb50a4a-Binary Domain-PlayStation 3.png',
+                                   '98cfb19b374ad1592c7cec0f27e1767a-Binary Domain-Windows.png',
+                                   '98cfb19b374ad1592c7cec0f27e1767a-Binary Domain-Windows.png',
+                                   '98cfb19b374ad1592c7cec0f27e1767a-Binary Domain-Windows.png',
+                                   '98cfb19b374ad1592c7cec0f27e1767a-Binary Domain-Windows.png',
+                                   '98cfb19b374ad1592c7cec0f27e1767a-Binary Domain-Windows.png',
+                                   '1fe9a57bd76af063d3a818e59c7d2758-Binary Domain-Xbox 360.png',
+                                   '1fe9a57bd76af063d3a818e59c7d2758-Binary Domain-Xbox 360.png'
+                                 ],
+                       'rating' => '',
+                       'title' => 'Binary Domain',
+                       'platforms' => [
+                                      'Macintosh',
+                                      'Windows'
+                                    ],
+                       'developer' => [
+                                      "Ryu\x{a0}ga\x{a0}Gotoku\x{a0}Studio"
+                                    ],
+                       'terms' => [
+                                  '"BD" -- ',
+                                  "\"\x{30d0}\x{30a4}\x{30ca}\x{30ea}\x{30fc}\x{30c9}\x{30e1}\x{30a4}\x{30f3}\" -- "
+                                ]
+                     },
+            'score' => '0.416903913021088',
+            'path' => {
+                      'collection' => 'games',
+                      'key' => 'Binary Domain',
+                      'ref' => '39b1532c9be04ce9',
+                      'reftime' => '1411521080492'
+                    }
+          },
+          {
+            'reftime' => '1411588468352',
+            'value' => {
+                       'metaScore' => 0,
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'publisher' => [
+                                      "SEGA\x{a0}of\x{a0}America,\x{a0}Inc."
+                                    ],
+                       'description' => '',
+                       'genre' => [
+                                  'Action',
+                                  "Role-Playing\x{a0}(RPG)"
+                                ],
+                       'specs' => [],
+                       'developer' => [
+                                      "Amusement\x{a0}Vision,\x{a0}Ltd."
+                                    ],
+                       'terms' => [
+                                  "\"\x{9f8d}\x{304c}\x{5982}\x{304f} 2\" -- ",
+                                  '"Ryuu ga Gotoku 2" -- '
+                                ],
+                       'theme' => [
+                                  'Fighting'
+                                ],
+                       'releasedate' => [
+                                        'Sep 09, 2008'
+                                      ],
+                       'images' => [
+                                   '08cca2023ae441500fd9fd511b993279-Yakuza 2-PlayStation 2.png',
+                                   '08cca2023ae441500fd9fd511b993279-Yakuza 2-PlayStation 2.png',
+                                   '08cca2023ae441500fd9fd511b993279-Yakuza 2-PlayStation 2.png',
+                                   '08cca2023ae441500fd9fd511b993279-Yakuza 2-PlayStation 2.png',
+                                   '08cca2023ae441500fd9fd511b993279-Yakuza 2-PlayStation 2.png'
+                                 ],
+                       'rating' => '',
+                       'title' => 'Yakuza 2',
+                       'platforms' => [
+                                      'PC-88',
+                                      'PC-98',
+                                      'Sharp X68000'
+                                    ]
+                     },
+            'score' => '0.416903913021088',
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411588468352',
+                      'key' => 'Yakuza 2',
+                      'ref' => '7075787441655148'
+                    }
+          },
+          {
+            'reftime' => '1411555110976',
+            'value' => {
+                       'theme' => [
+                                  "Anime\x{a0}/\x{a0}Manga"
+                                ],
+                       'releasedate' => [
+                                        'Jul 17, 1992'
+                                      ],
+                       'images' => [],
+                       'rating' => '',
+                       'platforms' => [
+                                      'NES'
+                                    ],
+                       'title' => 'Mitsume ga Tooru',
+                       'terms' => [
+                                  "\"\x{4e09}\x{3064}\x{76ee}\x{304c}\x{3068}\x{304a}\x{308b}\" -- "
+                                ],
+                       'developer' => [
+                                      "Natsume\x{a0}Co.,\x{a0}Ltd."
+                                    ],
+                       'description' => '',
+                       'genre' => [
+                                  'Action'
+                                ],
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'perspective' => [
+                                        'Side-Scrolling'
+                                      ],
+                       'publisher' => [
+                                      'Tomy'
+                                    ]
+                     },
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411555110976',
+                      'key' => 'Mitsume ga Tooru',
+                      'ref' => 'dcda0f9c50961e5c'
+                    },
+            'score' => '0.416903913021088'
+          },
+          {
+            'path' => {
+                      'reftime' => '1411567815982',
+                      'ref' => 'ca407bc466cfa689',
+                      'key' => 'Saru Ga Daisuki',
+                      'collection' => 'games'
+                    },
+            'score' => '0.377040356397629',
+            'value' => {
+                       'terms' => [],
+                       'developer' => [
+                                      "Cactus\x{a0}Games"
+                                    ],
+                       'title' => 'Saru Ga Daisuki',
+                       'platforms' => [
+                                      'Windows'
+                                    ],
+                       'rating' => '',
+                       'images' => [],
+                       'releasedate' => [
+                                        'Nov 11, 2006'
+                                      ],
+                       'theme' => [
+                                  'Puzzle-Solving'
+                                ],
+                       'publisher' => [
+                                      "Cactus\x{a0}Games"
+                                    ],
+                       'perspective' => [
+                                        'Platform'
+                                      ],
+                       'metaScore' => 0,
+                       'specs' => [],
+                       'genre' => [
+                                  'Action'
+                                ],
+                       'description' => ''
+                     },
+            'reftime' => '1411567815982'
+          },
+          {
+            'score' => '0.377040356397629',
+            'path' => {
+                      'collection' => 'games',
+                      'key' => 'Yakuza',
+                      'ref' => 'f9170c6d2dd43220',
+                      'reftime' => '1411588464197'
+                    },
+            'reftime' => '1411588464197',
+            'value' => {
+                       'genre' => [
+                                  'Action',
+                                  "Role-Playing\x{a0}(RPG)"
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "SEGA\x{a0}of\x{a0}America,\x{a0}Inc."
+                                    ],
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'images' => [
+                                   '22387dd9253e98ee3e38d8c49a4b01b4-Yakuza-PlayStation 2.png',
+                                   '22387dd9253e98ee3e38d8c49a4b01b4-Yakuza-PlayStation 2.png',
+                                   '22387dd9253e98ee3e38d8c49a4b01b4-Yakuza-PlayStation 2.png',
+                                   '22387dd9253e98ee3e38d8c49a4b01b4-Yakuza-PlayStation 2.png',
+                                   '22387dd9253e98ee3e38d8c49a4b01b4-Yakuza-PlayStation 2.png',
+                                   '22387dd9253e98ee3e38d8c49a4b01b4-Yakuza-PlayStation 2.png'
+                                 ],
+                       'theme' => [
+                                  'Fighting'
+                                ],
+                       'releasedate' => [
+                                        'Sep 08, 2006'
+                                      ],
+                       'platforms' => [
+                                      'PC-88',
+                                      'PC-98',
+                                      'Sharp X68000'
+                                    ],
+                       'title' => 'Yakuza',
+                       'rating' => '',
+                       'developer' => [
+                                      "Amusement\x{a0}Vision,\x{a0}Ltd."
+                                    ],
+                       'terms' => [
+                                  "\"\x{9f8d}\x{304c}\x{5982}\x{304f}\" -- ",
+                                  '"Ryu ga Gotoku" -- '
+                                ]
+                     }
+          },
+          {
+            'reftime' => '1411532128816',
+            'value' => {
+                       'rating' => '',
+                       'platforms' => [
+                                      'DOS'
+                                    ],
+                       'title' => 'Dokkaebi-ga Ganda',
+                       'releasedate' => [
+                                        '1995'
+                                      ],
+                       'theme' => [],
+                       'images' => [],
+                       'developer' => [
+                                      "Senori\x{a0}Box"
+                                    ],
+                       'terms' => [
+                                  "\"\x{b3c4}\x{ae68}\x{be44}\x{ac00} \x{ac04}\x{b2e4} \" -- "
+                                ],
+                       'specs' => [],
+                       'description' => '',
+                       'genre' => [
+                                  'Action'
+                                ],
+                       'perspective' => [
+                                        'Platform',
+                                        'Side-Scrolling'
+                                      ],
+                       'publisher' => [
+                                      "Senori\x{a0}Box"
+                                    ],
+                       'metaScore' => 0
+                     },
+            'score' => '0.374885410070419',
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411532128816',
+                      'ref' => '172665389c6f2954',
+                      'key' => 'Dokkaebi-ga Ganda'
+                    }
+          },
+          {
+            'value' => {
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "Essential\x{a0}Myth,\x{a0}The",
+                                      "Bandai\x{a0}America,\x{a0}Inc."
+                                    ],
+                       'perspective' => [
+                                        'Side-Scrolling'
+                                      ],
+                       'genre' => [
+                                  'Adventure',
+                                  'Action'
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'terms' => [
+                                  "\"\x{30b8}\x{30fc}\x{30ad}\x{30eb}\x{535a}\x{58eb}\x{306e}\x{5f77}\x{9b54}\x{304c}\x{523b}\" -- ",
+                                  "\"J\x{12b}kiru Hakase no H\x{14d}ma ga Toki\" -- "
+                                ],
+                       'developer' => [
+                                      "Essential\x{a0}Myth,\x{a0}The",
+                                      "Advance\x{a0}Communication\x{a0}Company"
+                                    ],
+                       'images' => [
+                                   '4d02b7192b2086fa64b3452fa0355ae6-Dr. Jekyll and Mr. Hyde-NES.png'
+                                 ],
+                       'releasedate' => [
+                                        '1988',
+                                        'Apr, 1989'
+                                      ],
+                       'theme' => [
+                                  "Interactive\x{a0}Fiction\x{a0}with\x{a0}Graphics"
+                                ],
+                       'title' => 'Dr. Jekyll and Mr. Hyde',
+                       'platforms' => [
+                                      'Atari ST',
+                                      'ZX Spectrum',
+                                      'NES'
+                                    ],
+                       'rating' => ''
+                     },
+            'reftime' => '1411533329131',
+            'score' => '0.365841507911682',
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411533329131',
+                      'key' => 'Dr. Jekyll and Mr. Hyde',
+                      'ref' => '2f97a076e6743073'
+                    }
+          },
+          {
+            'value' => {
+                       'platforms' => [
+                                      'Arcade'
+                                    ],
+                       'title' => 'Yakuza: Dead Souls',
+                       'rating' => '',
+                       'images' => [
+                                   '4cccf77c9a24970faaf2b6ea7c9b35f7-Yakuza: Dead Souls-PlayStation 3.png',
+                                   '4cccf77c9a24970faaf2b6ea7c9b35f7-Yakuza: Dead Souls-PlayStation 3.png',
+                                   '4cccf77c9a24970faaf2b6ea7c9b35f7-Yakuza: Dead Souls-PlayStation 3.png'
+                                 ],
+                       'theme' => [
+                                  'Horror',
+                                  'Post-Apocalyptic',
+                                  'Shooter'
+                                ],
+                       'releasedate' => [
+                                        'Mar 13, 2012'
+                                      ],
+                       'terms' => [
+                                  "\"Ry\x{16b} ga Gotoku: OF THE END\" -- "
+                                ],
+                       'developer' => [
+                                      "Ryu\x{a0}ga\x{a0}Gotoku\x{a0}Studio"
+                                    ],
+                       'specs' => [],
+                       'genre' => [
+                                  'Action',
+                                  "Role-Playing\x{a0}(RPG)"
+                                ],
+                       'description' => '',
+                       'publisher' => [
+                                      "SEGA\x{a0}of\x{a0}America,\x{a0}Inc."
+                                    ],
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'metaScore' => 0
+                     },
+            'reftime' => '1411588477277',
+            'score' => '0.329910308122635',
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411588477277',
+                      'key' => 'Yakuza: Dead Souls',
+                      'ref' => 'e6d76a91f8c16952'
+                    }
+          },
+          {
+            'value' => {
+                       'images' => [],
+                       'releasedate' => [
+                                        'Aug 17, 1993'
+                                      ],
+                       'theme' => [
+                                  'Adult',
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  "Visual\x{a0}Novel"
+                                ],
+                       'title' => 'Erotic Baka Novel: Denwa no Bell ga...',
+                       'platforms' => [
+                                      'PC-98'
+                                    ],
+                       'rating' => '',
+                       'developer' => [
+                                      "Cocktail\x{a0}Soft"
+                                    ],
+                       'terms' => [
+                                  "\"\x{30a8}\x{30ed}\x{30c1}\x{30c3}\x{30af}\x{99ac}\x{9e7f}\x{30ce}\x{30d9}\x{30eb} \x{96fb}\x{8a71}\x{306e}\x{30d9}\x{30eb}\x{304c}\x{ff65}\x{ff65}\x{ff65}\" -- "
+                                ],
+                       'genre' => [
+                                  'Adventure'
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "Cocktail\x{a0}Soft"
+                                    ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective"
+                                      ]
+                     },
+            'reftime' => '1411535633267',
+            'path' => {
+                      'ref' => '7b368386d7280ece',
+                      'key' => 'Erotic Baka Novel: Denwa no Bell ga...',
+                      'reftime' => '1411535633267',
+                      'collection' => 'games'
+                    },
+            'score' => '0.312677919864655'
+          },
+          {
+            'score' => '0.306345283985138',
+            'path' => {
+                      'collection' => 'games',
+                      'key' => 'Ga-rou-den Breakblow',
+                      'ref' => '38f129124aec114c',
+                      'reftime' => '1411540807706'
+                    },
+            'reftime' => '1411540807706',
+            'value' => {
+                       'publisher' => [
+                                      "Entertainment\x{a0}Software\x{a0}Publishing\x{a0}Inc."
+                                    ],
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective",
+                                        'Side-Scrolling'
+                                      ],
+                       'metaScore' => 0,
+                       'specs' => [],
+                       'genre' => [
+                                  'Action'
+                                ],
+                       'description' => '',
+                       'terms' => [
+                                  "\"\x{9913}\x{72fc}\x{4f1d} Breakblow\" -- "
+                                ],
+                       'developer' => [
+                                      "Opus\x{a0}Corp."
+                                    ],
+                       'title' => 'Ga-rou-den Breakblow',
+                       'platforms' => [
+                                      'PlayStation 2'
+                                    ],
+                       'rating' => '',
+                       'images' => [
+                                   '401ccdacf301bd1c299d60fa28d7e27f-Ga-rou-den Breakblow-PlayStation 2.png'
+                                 ],
+                       'theme' => [
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  'Fighting',
+                                  "Martial\x{a0}Arts"
+                                ],
+                       'releasedate' => [
+                                        'Nov 17, 2005'
+                                      ]
+                     }
+          },
+          {
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411535477916',
+                      'key' => 'English Training: Have Fun Improving Your Skills',
+                      'ref' => 'b93071269f15b6f7'
+                    },
+            'score' => '0.304867923259735',
+            'value' => {
+                       'images' => [
+                                   'fab4cc0f4457428ca0fd76bbf4e34bb3-English Training: Have Fun Improving Your Skills-Nintendo DS.png'
+                                 ],
+                       'releasedate' => [
+                                        'Jan 26, 2006'
+                                      ],
+                       'theme' => [],
+                       'title' => 'English Training: Have Fun Improving Your Skills',
+                       'platforms' => [
+                                      'Nintendo DS'
+                                    ],
+                       'rating' => '',
+                       'developer' => [
+                                      "Plato\x{a0}Corp."
+                                    ],
+                       'terms' => [
+                                  "\"\x{82f1}\x{8a9e}\x{304c}\x{82e6}\x{624b}\x{306a}\x{5927}\x{4eba}\x{306e}DS\x{30c8}\x{30ec}\x{30fc}\x{30cb}\x{30f3}\x{30b0}\x{3000}\x{3048}\x{3044}\x{3054}\x{6f2c}\x{3051}\" -- ",
+                                  '"English Training: Spielend Englisch lernen" -- ',
+                                  '"English Training: Progressez en anglais sans stresser" -- ',
+                                  '"English Training: Migliora il tuo inglese divertendoti!" -- ',
+                                  '"English Training: Leer spelenderwijs Engels" -- ',
+                                  "\"English Training: Disfruta y mejora tu ingl\x{e9}s\" -- ",
+                                  '"Eigo ga Nigate na Otona no DS Training: Eigozuke" -- ',
+                                  "\"\x{b4e3}\x{ace0} \x{c4f0}\x{ace0} \x{ce5c}\x{d574}\x{c9c0}\x{b294} DS \x{c601}\x{c5b4} \x{c0bc}\x{b9e4}\x{acbd}\" -- "
+                                ],
+                       'genre' => [
+                                  'Educational'
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "Nintendo\x{a0}Co.,\x{a0}Ltd."
+                                    ],
+                       'perspective' => []
+                     },
+            'reftime' => '1411535477916'
+          },
+          {
+            'reftime' => '1411560017039',
+            'value' => {
+                       'genre' => [
+                                  'Adventure'
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "Success\x{a0}Corp."
+                                    ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective",
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'images' => [
+                                   '8fd309476cc9050ea72bbce12ec0dcd1-Otoshi Deka: Keiji-san, Watashi ga Yarimashita-Nintendo DS.png'
+                                 ],
+                       'releasedate' => [
+                                        'Sep 18, 2008'
+                                      ],
+                       'theme' => [
+                                  "Detective\x{a0}/\x{a0}Mystery"
+                                ],
+                       'title' => 'Otoshi Deka: Keiji-san, Watashi ga Yarimashita',
+                       'platforms' => [
+                                      'Nintendo DS'
+                                    ],
+                       'rating' => '',
+                       'developer' => [
+                                      "Beyond\x{a0}Interactive,\x{a0}Inc."
+                                    ],
+                       'terms' => []
+                     },
+            'score' => '0.286621421575546',
+            'path' => {
+                      'key' => 'Otoshi Deka: Keiji-san, Watashi ga Yarimashita',
+                      'ref' => '965ed4d77a830b0b',
+                      'reftime' => '1411560017039',
+                      'collection' => 'games'
+                    }
+          },
+          {
+            'score' => '0.282780259847641',
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411541573096',
+                      'key' => 'G.O.D - Mezameyo to Yobu Koe ga Kikoe',
+                      'ref' => '42fa03289b6757ae'
+                    },
+            'reftime' => '1411541573096',
+            'value' => {
+                       'description' => '',
+                       'genre' => [
+                                  "Role-Playing\x{a0}(RPG)"
+                                ],
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective",
+                                        'Top-Down'
+                                      ],
+                       'publisher' => [
+                                      "Imagineer\x{a0}Co.,\x{a0}Ltd."
+                                    ],
+                       'theme' => [
+                                  "Sci-Fi\x{a0}/\x{a0}Futuristic",
+                                  'Turn-based'
+                                ],
+                       'releasedate' => [
+                                        'Dec 20, 1996'
+                                      ],
+                       'images' => [],
+                       'rating' => '',
+                       'title' => 'G.O.D - Mezameyo to Yobu Koe ga Kikoe',
+                       'platforms' => [
+                                      'SNES'
+                                    ],
+                       'developer' => [
+                                      "Infinity\x{a0}Co.,\x{a0}Ltd.",
+                                      "Third\x{a0}Stage"
+                                    ],
+                       'terms' => [
+                                  "\"\x{ff27}\x{30fb}\x{ff2f}\x{30fb}\x{ff24}\x{3000}\x{76ee}\x{899a}\x{3081}\x{3088}\x{3068}\x{547c}\x{3076}\x{58f0}\x{304c}\x{8074}\x{3053}\x{3048}\" -- "
+                                ]
+                     }
+          },
+          {
+            'value' => {
+                       'description' => '',
+                       'genre' => [
+                                  'Adventure'
+                                ],
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective"
+                                      ],
+                       'publisher' => [
+                                      'Axela'
+                                    ],
+                       'theme' => [],
+                       'releasedate' => [
+                                        'Dec 11, 1997'
+                                      ],
+                       'images' => [
+                                   '4e339a89458daf936b07b020c0347f3d-Maria: Kimitachi ga Umareta Wake-SEGA Saturn.png'
+                                 ],
+                       'rating' => '',
+                       'title' => 'Maria: Kimitachi ga Umareta Wake',
+                       'platforms' => [
+                                      'PlayStation',
+                                      'SEGA Saturn'
+                                    ],
+                       'developer' => [
+                                      'Axela'
+                                    ],
+                       'terms' => [
+                                  "\"\x{30de}\x{30ea}\x{30a2}\x{3000}\x{541b}\x{305f}\x{3061}\x{304c}\x{751f}\x{307e}\x{308c}\x{305f}\x{7406}\x{7531}\" -- "
+                                ]
+                     },
+            'reftime' => '1411552365099',
+            'score' => '0.282780259847641',
+            'path' => {
+                      'reftime' => '1411552365099',
+                      'ref' => '38233d33fcb922a2',
+                      'key' => 'Maria: Kimitachi ga Umareta Wake',
+                      'collection' => 'games'
+                    }
+          },
+          {
+            'reftime' => '1411588402919',
+            'value' => {
+                       'images' => [],
+                       'releasedate' => [
+                                        'Apr 19, 2001'
+                                      ],
+                       'theme' => [
+                                  'Adult',
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  'Turn-based'
+                                ],
+                       'title' => 'Yoru ga Kuru! Square of the Moon',
+                       'platforms' => [
+                                      'Windows'
+                                    ],
+                       'rating' => '',
+                       'terms' => [],
+                       'developer' => [
+                                      "Alice\x{a0}Soft"
+                                    ],
+                       'genre' => [
+                                  "Role-Playing\x{a0}(RPG)"
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "Alice\x{a0}Soft"
+                                    ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective",
+                                        'Isometric'
+                                      ]
+                     },
+            'score' => '0.281164050102234',
+            'path' => {
+                      'reftime' => '1411588402919',
+                      'ref' => '67497206b9702c09',
+                      'key' => 'Yoru ga Kuru! Square of the Moon',
+                      'collection' => 'games'
+                    }
+          },
+          {
+            'value' => {
+                       'terms' => [
+                                  "\"\x{9f8d}\x{304c}\x{5982}\x{304f}\x{ff13}\" -- ",
+                                  '"Ryuu ga Gotoku 3" -- '
+                                ],
+                       'developer' => [
+                                      "Amusement\x{a0}Vision,\x{a0}Ltd."
+                                    ],
+                       'rating' => '',
+                       'platforms' => [
+                                      'PC-88',
+                                      'PC-98',
+                                      'Sharp X68000'
+                                    ],
+                       'title' => 'Yakuza 3',
+                       'releasedate' => [
+                                        'Mar 09, 2010'
+                                      ],
+                       'theme' => [
+                                  'Fighting'
+                                ],
+                       'images' => [
+                                   'c52b506f76ae245a1fcd147f2587fc80-Yakuza 3-PlayStation 3.png',
+                                   'c52b506f76ae245a1fcd147f2587fc80-Yakuza 3-PlayStation 3.png',
+                                   'c52b506f76ae245a1fcd147f2587fc80-Yakuza 3-PlayStation 3.png'
+                                 ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective",
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'publisher' => [
+                                      "SEGA\x{a0}of\x{a0}America,\x{a0}Inc."
+                                    ],
+                       'metaScore' => 0,
+                       'specs' => [],
+                       'description' => '',
+                       'genre' => [
+                                  'Action',
+                                  "Role-Playing\x{a0}(RPG)"
+                                ]
+                     },
+            'reftime' => '1411588471178',
+            'score' => '0.257009446620941',
+            'path' => {
+                      'reftime' => '1411588471178',
+                      'key' => 'Yakuza 3',
+                      'ref' => '17cbf74c6e60039d',
+                      'collection' => 'games'
+                    }
+          },
+          {
+            'score' => '0.235650226473808',
+            'path' => {
+                      'reftime' => '1411551893670',
+                      'key' => 'Magical Starsign',
+                      'ref' => '203549adb7857283',
+                      'collection' => 'games'
+                    },
+            'reftime' => '1411551893670',
+            'value' => {
+                       'images' => [
+                                   '1426af7a2e097b110af42de8b4744a46-Magical Starsign-Nintendo DS.png',
+                                   '1426af7a2e097b110af42de8b4744a46-Magical Starsign-Nintendo DS.png',
+                                   '1426af7a2e097b110af42de8b4744a46-Magical Starsign-Nintendo DS.png'
+                                 ],
+                       'theme' => [
+                                  'Fantasy',
+                                  'Puzzle-Solving',
+                                  "Sci-Fi\x{a0}/\x{a0}Futuristic"
+                                ],
+                       'releasedate' => [
+                                        'Oct 23, 2006'
+                                      ],
+                       'platforms' => [
+                                      'Windows'
+                                    ],
+                       'title' => 'Magical Starsign',
+                       'rating' => '',
+                       'terms' => [
+                                  "\"\x{30de}\x{30b8}\x{30ab}\x{30eb}\x{30d0}\x{30b1}\x{30fc}\x{30b7}\x{30e7}\x{30f3} \x{ff15}\x{3064}\x{306e}\x{661f}\x{304c}\x{306a}\x{3089}\x{3076}\x{3068}\x{304d}\" -- ",
+                                  '"Magical Vacation: 5tsu no Hoshi ga Narabu toki" -- '
+                                ],
+                       'developer' => [
+                                      "Brownie\x{a0}Brown\x{a0}Inc."
+                                    ],
+                       'genre' => [
+                                  "Role-Playing\x{a0}(RPG)"
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "Nintendo\x{a0}of\x{a0}America\x{a0}Inc."
+                                    ],
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective"
+                                      ]
+                     }
+          },
+          {
+            'reftime' => '1411552313953',
+            'value' => {
+                       'theme' => [
+                                  "Interactive\x{a0}Movie",
+                                  "Video\x{a0}Backdrop"
+                                ],
+                       'releasedate' => [
+                                        '1995'
+                                      ],
+                       'images' => [
+                                   'bf1710e50d00853fae114cfef2cee89f-The Mansion of Hidden Souls-SEGA Saturn.png',
+                                   'bf1710e50d00853fae114cfef2cee89f-The Mansion of Hidden Souls-SEGA Saturn.png',
+                                   'bf1710e50d00853fae114cfef2cee89f-The Mansion of Hidden Souls-SEGA Saturn.png'
+                                 ],
+                       'rating' => 'Kids to Adults',
+                       'platforms' => [
+                                      'SEGA Saturn'
+                                    ],
+                       'title' => 'The Mansion of Hidden Souls',
+                       'developer' => [
+                                      "SEGA\x{a0}Enterprises\x{a0}Ltd."
+                                    ],
+                       'terms' => [
+                                  '"Shinsetsu Yumemi Yakata - Tobira no Oku ni Dareka ga..." -- ',
+                                  '"Mystery Mansion: Das Haus der verlorenen Seelen" -- ',
+                                  '"Le Manoir des Ames Perdues" -- ',
+                                  "\"La Mansi\x{f3}n de las Almas Ocultas\" -- "
+                                ],
+                       'description' => '',
+                       'genre' => [
+                                  'Adventure'
+                                ],
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective"
+                                      ],
+                       'publisher' => [
+                                      "SEGA\x{a0}of\x{a0}America,\x{a0}Inc."
+                                    ]
+                     },
+            'score' => '0.234303385019302',
+            'path' => {
+                      'key' => 'The Mansion of Hidden Souls',
+                      'ref' => '585eb0515f17d26b',
+                      'reftime' => '1411552313953',
+                      'collection' => 'games'
+                    }
+          },
+          {
+            'score' => '0.224883258342743',
+            'path' => {
+                      'reftime' => '1411551300523',
+                      'key' => 'Love Songs: Idol ga Classmate',
+                      'ref' => '46e3e944b2f86830',
+                      'collection' => 'games'
+                    },
+            'value' => {
+                       'genre' => [
+                                  'Adventure',
+                                  'Simulation'
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "D3Publisher\x{a0}Inc."
+                                    ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective",
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'images' => [],
+                       'theme' => [
+                                  "Anime\x{a0}/\x{a0}Manga"
+                                ],
+                       'releasedate' => [
+                                        'Apr 26, 2001'
+                                      ],
+                       'platforms' => [
+                                      'PlayStation 2'
+                                    ],
+                       'title' => 'Love Songs: Idol ga Classmate',
+                       'rating' => '',
+                       'developer' => [
+                                      "HuneX\x{a0}Co.,\x{a0}Ltd."
+                                    ],
+                       'terms' => []
+                     },
+            'reftime' => '1411551300523'
+          },
+          {
+            'score' => '0.208451956510544',
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411548308061',
+                      'ref' => '601f65a47d51be77',
+                      'key' => 'Kimi ga Yobu, Megiddo no Oka de: Voices from Har Megiddo'
+                    },
+            'value' => {
+                       'terms' => [
+                                  "\"\x{541b}\x{304c}\x{547c}\x{3076}\x{3001}\x{30e1}\x{30ae}\x{30c9}\x{306e}\x{4e18}\x{3067}\" -- "
+                                ],
+                       'developer' => [
+                                      'Leaf'
+                                    ],
+                       'rating' => '',
+                       'title' => 'Kimi ga Yobu, Megiddo no Oka de: Voices from Har Megiddo',
+                       'platforms' => [
+                                      'Windows'
+                                    ],
+                       'releasedate' => [
+                                        'Dec 26, 2008'
+                                      ],
+                       'theme' => [
+                                  'Adult',
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  'Fantasy',
+                                  'Turn-based'
+                                ],
+                       'images' => [],
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'publisher' => [
+                                      'Aquaplus'
+                                    ],
+                       'metaScore' => 0,
+                       'specs' => [],
+                       'description' => '',
+                       'genre' => [
+                                  "Role-Playing\x{a0}(RPG)"
+                                ]
+                     },
+            'reftime' => '1411548308061'
+          },
+          {
+            'score' => '0.192757099866867',
+            'path' => {
+                      'collection' => 'games',
+                      'ref' => '1e6a8639d824476e',
+                      'key' => 'Parodius',
+                      'reftime' => '1411560885689'
+                    },
+            'reftime' => '1411560885689',
+            'value' => {
+                       'developer' => [
+                                      "Konami\x{a0}Industry\x{a0}Co.\x{a0}Ltd.",
+                                      "Konami\x{a0}Computer\x{a0}Entertainment\x{a0}Tokyo,\x{a0}Inc."
+                                    ],
+                       'terms' => [
+                                  '"Parodius: Tako ga chikyuu o sukuu" -- ',
+                                  "\"\x{6975}\x{4e0a}\x{30d1}\x{30ed}\x{30c7}\x{30a3}\x{30a6}\x{30b9}\x{3060}\x{ff01}\x{3000}\x{ff24}\x{ff25}\x{ff2c}\x{ff35}\x{ff38}\x{ff25}\x{3000}\x{ff30}\x{ff21}\x{ff23}\x{ff2b}\" -- ",
+                                  "\"Gokuj\x{14d} Parodius Da! Deluxe Pack\" -- ",
+                                  "\"\x{30d1}\x{30ed}\x{30c7}\x{30a3}\x{30a6}\x{30b9}\x{3060}!\x{3000}\x{795e}\x{8a71}\x{304b}\x{3089}\x{304a}\x{7b11}\x{3044}\x{3078}\" -- ",
+                                  '"Parodius: Non-Sense Fantasy" -- ',
+                                  '"Parodius Da!" -- ',
+                                  '"Parodius 1" -- '
+                                ],
+                       'theme' => [
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  'Arcade',
+                                  'Shooter'
+                                ],
+                       'releasedate' => [
+                                        '1988',
+                                        'Dec 03, 1994',
+                                        'Apr 25, 1990'
+                                      ],
+                       'images' => [
+                                   '1714ee4a1401422f57cd16ed7df0bdeb-Parodius-MSX.png',
+                                   'f9fb40ce858f60407ae21ee51d3509c1-Parodius-Wii U.png',
+                                   '4d41cd9133565a6abe20759f2fbbc014-Parodius-Game Boy.png',
+                                   '4d41cd9133565a6abe20759f2fbbc014-Parodius-Game Boy.png',
+                                   'cb235682d172a862457dc1c7fc12a2f7-Parodius-NES.png',
+                                   'cb235682d172a862457dc1c7fc12a2f7-Parodius-NES.png',
+                                   'cb235682d172a862457dc1c7fc12a2f7-Parodius-NES.png',
+                                   '737c08bb2bc74d33840d5d0fd382e4bf-Parodius-SNES.png',
+                                   '737c08bb2bc74d33840d5d0fd382e4bf-Parodius-SNES.png',
+                                   'af2c0feeefa6ae5dc6490795e525839e-Parodius-TurboGrafx-16.png',
+                                   '7fc43113c2835996fd7098ee0d08bdff-Parodius-PlayStation.png',
+                                   '7fc43113c2835996fd7098ee0d08bdff-Parodius-PlayStation.png',
+                                   '7fc43113c2835996fd7098ee0d08bdff-Parodius-PlayStation.png',
+                                   '3cd3ce1d573b5217d3f58f19215ad450-Parodius-SEGA Saturn.png',
+                                   '3cd3ce1d573b5217d3f58f19215ad450-Parodius-SEGA Saturn.png'
+                                 ],
+                       'rating' => '',
+                       'platforms' => [
+                                      'MSX',
+                                      'Wii',
+                                      'Wii U',
+                                      'PlayStation',
+                                      'SEGA Saturn',
+                                      'Arcade',
+                                      'Game Boy',
+                                      'NES',
+                                      'Sharp X68000',
+                                      'SNES',
+                                      'TurboGrafx-16'
+                                    ],
+                       'title' => 'Parodius',
+                       'metaScore' => 0,
+                       'perspective' => [
+                                        "3rd-Person\x{a0}Perspective",
+                                        'Side-Scrolling'
+                                      ],
+                       'publisher' => [
+                                      "Konami\x{a0}Industry\x{a0}Co.\x{a0}Ltd.",
+                                      "Konami\x{a0}Co.,\x{a0}Ltd."
+                                    ],
+                       'description' => '',
+                       'genre' => [
+                                  'Action'
+                                ],
+                       'specs' => []
+                     }
+          },
+          {
+            'score' => '0.192757099866867',
+            'path' => {
+                      'collection' => 'games',
+                      'key' => 'Cherry Jam: Kanojo ga Hadaka ni Kigaetara',
+                      'ref' => 'de3eaf77e53ee974',
+                      'reftime' => '1411525537451'
+                    },
+            'value' => {
+                       'genre' => [
+                                  'Adventure'
+                                ],
+                       'description' => '',
+                       'specs' => [],
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      'JAM'
+                                    ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective"
+                                      ],
+                       'images' => [],
+                       'releasedate' => [
+                                        'Aug 02, 1996'
+                                      ],
+                       'theme' => [
+                                  'Adult',
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  "Visual\x{a0}Novel"
+                                ],
+                       'platforms' => [
+                                      'PC-98'
+                                    ],
+                       'title' => 'Cherry Jam: Kanojo ga Hadaka ni Kigaetara',
+                       'rating' => '',
+                       'terms' => [
+                                  "\"\x{30c1}\x{30a7}\x{30ea}\x{30fc}\x{30b8}\x{30e3}\x{30e0} \x{ff5e}\x{5f7c}\x{5973}\x{304c}\x{88f8}\x{306b}\x{7740}\x{66ff}\x{3048}\x{305f}\x{3089}\x{ff5e}\" -- "
+                                ],
+                       'developer' => [
+                                      'JAM'
+                                    ]
+                     },
+            'reftime' => '1411525537451'
+          },
+          {
+            'score' => '0.182628929615021',
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411551301379',
+                      'ref' => 'f875b9ca7e9e2dec',
+                      'key' => 'Love Songs: Idol ga Classmate (Shokai Gentei Box Type A: Seto, Mizuki Version)'
+                    },
+            'value' => {
+                       'terms' => [
+                                  "\"\x{30e9}\x{30d6}\x{30bd}\x{30f3}\x{30b0}\x{30b9} \x{30a2}\x{30a4}\x{30c9}\x{30eb}\x{304c}\x{30af}\x{30e9}\x{30b9}\x{30e1}\x{30fc}\x{30c8} \x{521d}\x{56de}\x{9650}\x{5b9a}\x{30dc}\x{30c3}\x{30af}\x{30b9} \x{30bf}\x{30a4}\x{30d7}C \x{6a58}\x{30fb}\x{6843}\x{5712}\x{30fb}\x{5929}\x{57ce}\x{30d0}\x{30fc}\x{30b8}\x{30e7}\x{30f3}\" -- ",
+                                  "\"\x{30e9}\x{30d6}\x{30bd}\x{30f3}\x{30b0}\x{30b9} \x{30a2}\x{30a4}\x{30c9}\x{30eb}\x{304c}\x{30af}\x{30e9}\x{30b9}\x{30e1}\x{30fc}\x{30c8} \x{521d}\x{56de}\x{9650}\x{5b9a}\x{30dc}\x{30c3}\x{30af}\x{30b9} \x{30bf}\x{30a4}\x{30d7}B \x{53cc}\x{8449}\x{30fb}\x{685c}\x{4e95}\x{30fb}\x{795e}\x{697d}\x{30d0}\x{30fc}\x{30b8}\x{30e7}\x{30f3}\" -- ",
+                                  "\"\x{30e9}\x{30d6}\x{30bd}\x{30f3}\x{30b0}\x{30b9} \x{30a2}\x{30a4}\x{30c9}\x{30eb}\x{304c}\x{30af}\x{30e9}\x{30b9}\x{30e1}\x{30fc}\x{30c8} \x{521d}\x{56de}\x{9650}\x{5b9a}\x{30dc}\x{30c3}\x{30af}\x{30b9} \x{30bf}\x{30a4}\x{30d7}A \x{702c}\x{6238}\x{30fb}\x{89b3}\x{6708}\x{30d0}\x{30fc}\x{30b8}\x{30e7}\x{30f3}\" -- ",
+                                  '"Love Songs: Idol ga Classmate (Shokai Gentei Box Type C: Tachibana, Momozono, Amagi Version)" -- ',
+                                  '"Love Songs: Idol ga Classmate (Shokai Gentei Box Type B: Futaba, Sakurai, Kagura Version)" -- '
+                                ],
+                       'developer' => [
+                                      "HuneX\x{a0}Co.,\x{a0}Ltd."
+                                    ],
+                       'platforms' => [
+                                      'PlayStation 2'
+                                    ],
+                       'title' => 'Love Songs: Idol ga Classmate (Shokai Gentei Box Type A: Seto, Mizuki Version)',
+                       'rating' => '',
+                       'images' => [
+                                   '59eca00350a0f52e7a731a507bfd3ad5-Love Songs: Idol ga Classmate (Shokai Gentei Box Type A: Seto, Mizuki Version)-PlayStation 2.png'
+                                 ],
+                       'theme' => [
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  "Visual\x{a0}Novel"
+                                ],
+                       'releasedate' => [
+                                        'Apr 26, 2001'
+                                      ],
+                       'publisher' => [
+                                      "D3Publisher\x{a0}Inc."
+                                    ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective",
+                                        "3rd-Person\x{a0}Perspective"
+                                      ],
+                       'metaScore' => 0,
+                       'specs' => [],
+                       'genre' => [
+                                  'Adventure'
+                                ],
+                       'description' => ''
+                     },
+            'reftime' => '1411551301379'
+          },
+          {
+            'reftime' => '1411525379265',
+            'value' => {
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective"
+                                      ],
+                       'publisher' => [
+                                      "Interchannel-Holon\x{a0}Inc."
+                                    ],
+                       'metaScore' => 0,
+                       'specs' => [],
+                       'description' => '',
+                       'genre' => [
+                                  'Adventure'
+                                ],
+                       'developer' => [
+                                      "Interchannel-Holon\x{a0}Inc."
+                                    ],
+                       'terms' => [
+                                  "\"\x{30b7}\x{30e3}\x{30f3}\x{30c6} \x{301c}\x{30ad}\x{30df}\x{306e}\x{6b4c}\x{304c}\x{3068}\x{3069}\x{3044}\x{305f}\x{3089}#\x{301c}\" -- "
+                                ],
+                       'rating' => '',
+                       'platforms' => [
+                                      'PlayStation 2'
+                                    ],
+                       'title' => 'Chanter: Kimi no Uta ga Todoitara #',
+                       'theme' => [
+                                  "Anime\x{a0}/\x{a0}Manga",
+                                  "Visual\x{a0}Novel"
+                                ],
+                       'releasedate' => [
+                                        'Aug 30, 2007'
+                                      ],
+                       'images' => [
+                                   'ad65d73bf1b191bf1a2627445e300d2d-Chanter: Kimi no Uta ga Todoitara #-PlayStation 2.png'
+                                 ]
+                     },
+            'path' => {
+                      'collection' => 'games',
+                      'reftime' => '1411525379265',
+                      'key' => 'Chanter: Kimi no Uta ga Todoitara #',
+                      'ref' => '1412a0543b14ff19'
+                    },
+            'score' => '0.176694005727768'
+          },
+          {
+            'value' => {
+                       'terms' => [
+                                  "\"\x{592a}\x{9f13}\x{306e}\x{9054}\x{4eba} \x{30bf}\x{30bf}\x{30b3}\x{30f3}\x{3067}\x{30c9}\x{30c9}\x{30f3}\x{304c}\x{30c9}\x{30f3}\" -- "
+                                ],
+                       'developer' => [
+                                      "Namco\x{a0}Limited"
+                                    ],
+                       'images' => [
+                                   '2856ab21abb2624aef5dda8acc4b778a-Taiko no Tatsujin: Tatacon de Dodon ga Don-PlayStation 2.png'
+                                 ],
+                       'releasedate' => [
+                                        'Oct 24, 2002'
+                                      ],
+                       'theme' => [
+                                  "Rhythm\x{a0}/\x{a0}Music"
+                                ],
+                       'platforms' => [
+                                      'PlayStation 2'
+                                    ],
+                       'title' => 'Taiko no Tatsujin: Tatacon de Dodon ga Don',
+                       'rating' => '',
+                       'metaScore' => 0,
+                       'publisher' => [
+                                      "Namco\x{a0}Limited"
+                                    ],
+                       'perspective' => [
+                                        "1st-Person\x{a0}Perspective"
+                                      ],
+                       'genre' => [
+                                  'Action'
+                                ],
+                       'description' => '',
+                       'specs' => []
+                     },
+            'reftime' => '1411578817681',
+            'score' => '0.14456781744957',
+            'path' => {
+                      'ref' => 'b3f8274a4aaf8ce2',
+                      'key' => 'Taiko no Tatsujin: Tatacon de Dodon ga Don',
+                      'reftime' => '1411578817681',
+                      'collection' => 'games'
+                    }
+          }
+        ];

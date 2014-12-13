@@ -7,81 +7,96 @@ use Mojo::JSON qw(encode_json);
 use Orchestrate::Collection::ResultSet;
 use Orchestrate::Collection::Result;
 
-has [qw(orchestrate name url)];
+has [qw(orchestrate name url error)];
 
 sub find {
-    my ( $self, $key, $ref ) = @_;
+  my $self = shift;
 
-    my $orchestrate = $self->orchestrate;
-    my $ua          = $orchestrate->ua;
-    my $url = $self->url->clone;
-    $ref ? push @{$url->path}, "$key/ref/$ref" : push @{$url->path}, $key;
+  my $orchestrate = $self->orchestrate;
+  my $ua          = $orchestrate->ua;
+  my $url         = $self->url->clone;
 
+  if (@_ > 1) {
+    push @{$url->path}, shift . '/ref/' . shift;
+  }
+  elsif (@_) {
+    push @{$url->path}, shift;
+  }
+  else {
+    return;
+  }
+  my $tx   = $ua->get($url);
+  my $data = $tx->res->json;
 
-    my $tx = $ua->get($url);
-    my $data = $tx->res->json;
+  $self->error($data->{message}) and return $self unless $tx->success;
 
-    return if $data->{code} and $orchestrate->_error($data->{code});
-    my $res_path = Mojo::Path->new( $tx->res->headers->content_location );
-    my $res_ref  = @{ $res_path->parts }[-1];
+  my $path = Mojo::Path->new($tx->res->headers->content_location);
+  my ($key, $ref) = (@{$path->parts})[2, 4];
 
+  my @columns = keys %{$data};
+  my $etag    = $tx->res->headers->etag;
 
-    my @columns = keys %{$data};
-    my $etag    = $tx->res->headers->etag;
+  return Orchestrate::Collection::Result->new(
+    orchestrate  => $orchestrate,
+    collection   => $self,
+    key          => $key,
+    ref          => $ref,
+    data         => $data,
+    etag         => $etag,
+    column_names => \@columns,
+  );
 
-    return Orchestrate::Collection::Result->new(
-        orchestrate  => $orchestrate,
-        collection   => $self,
-        key          => $key,
-        ref          => $res_ref,
-        data         => $data,
-        etag         => $etag,
-        column_names => \@columns,
-    );
 }
 
 sub search {
-    my ( $self, $args ) = @_;
-    my $orchestrate = $self->orchestrate;
+  my $self = shift;
+
+  my $orchestrate = $self->orchestrate;
+
+  my $url = $self->url->clone;
+  $url->path($self->name);
+  $url->query(query => shift);
+
+  my $ua   = $orchestrate->ua;
+  my $data = $ua->get($url)->res->json;
+
+  $self->error('The requested items could not be found.') and return $self
+    if $data->{count} == 0;
 
 
-    my $url = $self->url->clone;
-    $url->path( $self->name );
-    $url->query( query => $args );
+  my @columns = keys %{$data->{results}->[0]->{value}};
+  my $total   = $data->{total_count};
 
-    my $ua   = $orchestrate->ua;
-    my $data = $ua->get($url)->res->json;
-
-    my @columns = keys %{ $data->{results}->[0]->{value} };
-    my $total   = $data->{total_count};
-    my $next    = $data->{next};
-
-    return Orchestrate::Collection::ResultSet->new(
-        orchestrate  => $orchestrate,
-        collection   => $self,
-        data         => $data->{results},
-        column_names => \@columns,
-        total        => $total,
-        next_url     => $next
-    );
+  return Orchestrate::Collection::ResultSet->new(
+    orchestrate  => $orchestrate,
+    collection   => $self,
+    data         => $data,
+    next_data    => $data,
+    column_names => \@columns,
+    total        => $total,
+  );
 
 }
+
 # If key is supplied, create will only create if key does not exist
 
 sub create {
-  my ( $self, $key, $data ) = @_;
+  my $self = shift;
+
   my $orchestrate = $self->orchestrate;
 
   my $ua  = $orchestrate->ua;
   my $url = $self->url->clone;
 
   my $tx;
-  if (ref $key and !$data) {
-    $tx = $ua->build_tx(POST => $url => json => $key);
+  if (@_ > 1) {
+    push @{$url->path}, shift;
+    $tx = $ua->build_tx(
+      PUT => $url => {'If-None-Match' => '"*"'} => json => shift);
   }
-  elsif ( $key and ref $data ) {
-    push @{$url->path}, $key;
-    $tx = $ua->build_tx(PUT => $url => { 'If-None-Match' => '"*"' } => json => $data);
+  elsif (@_) {
+    $tx = $ua->build_tx(PUT => $url => json => shift);
+    return;
   }
   else {
     return;
@@ -89,16 +104,19 @@ sub create {
 
   $tx = $ua->start($tx);
 
-  croak $tx->success;
-  # my $res_path = Mojo::Path->new( $tx->res->headers->location );
-  # my ( $res_key, $res_ref ) = ( @{ $res_path->parts } )[ 2, 4 ];
+  croak 'Could not create record: ' . $tx->res->json->{message}
+    unless $tx->success;
 
-  # return Orchestrate::Collection::Relationship->new(
-  #     orchestrate => $orchestrate,
-  #     collection  => $self,
-  #     key         => $res_key,
-  #     ref         => $res_ref
-  # );
+  my $res_path = Mojo::Path->new($tx->res->headers->location);
+  my ($res_key, $res_ref) = (@{$res_path->parts})[2, 4];
+
+  return Orchestrate::Collection::Result->new(
+    orchestrate => $orchestrate,
+    collection  => $self,
+    key         => $res_key,
+    ref         => $res_ref,
+    etag        => $tx->res->headers->etag,
+  );
 
 }
 
@@ -106,16 +124,15 @@ sub update {
   my ($self, $key, $data, $ref) = @_;
 
   my $orchestrate = $self->orchestrate;
-  my $ua  = $orchestrate->ua;
-  my $url = $self->url->clone;
+  my $ua          = $orchestrate->ua;
+  my $url         = $self->url->clone;
 
   push @{$url->path}, $key;
 
   my $tx = $ua->build_tx(
-    PUT => $url => {'Content-Type' => 'application/json'} => json => $data
-  );
+    PUT => $url => {'Content-Type' => 'application/json'} => json => $data);
 
-  if ($ref and $ref eq 'false' ) {
+  if ($ref and $ref eq 'false') {
     $tx->req->headers->add('If-None-Match' => '*');
   }
   elsif ($ref) {
@@ -137,21 +154,6 @@ sub update {
 
 }
 
-sub find_or_create {
-
-}
-
-sub update_or_create {
-
-}
-
-sub create_all {
-
-}
-sub update_all {
-
-}
-
 # sub delete {
 #   my ($self, $key, $purge, $ref) = (shift, shift, shift, shift);
 #   my $orchestrate = $self->orchestrate;
@@ -168,7 +170,39 @@ sub update_all {
 
 # }
 
-    sub get_related {
+sub get_event {
+
+}
+
+sub create_event {
+
+}
+
+sub update_event {
+
+}
+
+sub delete_event {
+
+}
+
+sub find_or_create {
+
+}
+
+sub update_or_create {
+
+}
+
+sub create_all {
+
+}
+
+sub update_all {
+
+}
+
+sub get_related {
 
 }
 
@@ -181,7 +215,7 @@ sub delete_related {
 }
 
 sub get_refs {
-  my ($self,%opts) =  shift;
+  my ($self, %opts) = shift;
 
   croak qq{Key required.} unless ($opts{key});
 
