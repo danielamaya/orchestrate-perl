@@ -4,7 +4,7 @@ use Mojo::Base -base;
 use Carp 'croak';
 use Data::Dumper;
 
-has [qw(orchestrate collection data column_names next_url total)];
+has [qw(orchestrate data column_names next_url total)];
 
 sub all {
   my $self = shift;

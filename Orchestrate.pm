@@ -26,8 +26,6 @@ sub new {
 
 sub collection {
   my ($self, $name) = @_;
-
-
   return Orchestrate::Collection->new(
     orchestrate => $self,
     name => $name,
@@ -87,18 +85,24 @@ sub _authenticate {
 }
 
 sub _error {
-#   400   api_bad_request   The API request is malformed.
-# 400   search_param_invalid  A provided search query param is invalid.
-# 400   search_query_malformed  The provided search query is not a valid lucene query.
-# 400   item_ref_malformed  The provided Item Ref is malformed.
-# 401   security_unauthorized   Valid credentials are required.
-# 404   items_not_found   The requested items could not be found.
-# 409   indexing_conflict   The item has been stored but conflicts were detected when indexing. Conflicting fields have not been indexed.
-# 412   item_version_mismatch   The version of the item does not match.
-# 412   item_already_present  The item is already present.
-# 500   security_authentication   An error occurred while trying to authenticate.
-# 500   search_index_not_found  Index could not be queried for this application.
-# 500   internal_error  Internal Error.
+  my $code = shift;
+
+  my %codes = (
+    api_bad_request   => 'The API request is malformed.',
+    search_param_invalid  => 'A provided search query param is invalid.',
+    search_query_malformed  => 'The provided search query is not a valid lucene query.',
+    item_ref_malformed  => 'The provided Item Ref is malformed.',
+    security_unauthorized  => 'Valid credentials are required.',
+    items_not_found   => 'The requested items could not be found.',
+    indexing_conflict   => 'The item has been stored but conflicts were detected when indexing. Conflicting fields have not been indexed.',
+    item_version_mismatch =>  'The version of the item does not match.',
+    item_already_present  => 'The item is already present.',
+    security_authentication =>  'An error occurred while trying to authenticate.',
+    search_index_not_found => 'Index could not be queried for this application.',
+    internal_error => 'Internal Error.'
+  );
+
+  $codes{$code} ? return $codes{$code} : return;
 }
 
 1;

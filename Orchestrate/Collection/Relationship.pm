@@ -25,4 +25,11 @@ sub get_related {
   return $ua->get($url)->res->json;
 }
 
+sub create_related {
+
+}
+
+sub delete_related {
+
+}
 1;

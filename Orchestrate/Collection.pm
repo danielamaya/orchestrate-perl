@@ -10,78 +10,129 @@ use Orchestrate::Collection::Result;
 has [qw(orchestrate name url)];
 
 sub find {
-  my ($self, $key, $ref) = @_;
+    my ( $self, $key, $ref ) = @_;
 
-  my $orchestrate = $self->orchestrate;
-  my $ua          = $orchestrate->ua;
-  my $url         = $self->url->clone->path($ref ? "$key/ref/$ref" : $key);
+    my $orchestrate = $self->orchestrate;
+    my $ua          = $orchestrate->ua;
+    my $url = $self->url->clone;
+    $ref ? push @{$url->path}, "$key/ref/$ref" : push @{$url->path}, $key;
 
-  my $tx = $ua->get($url);
 
-  my $res_path = Mojo::Path->new($tx->res->headers->content_location);
-  my $res_ref  = @{$res_path->parts}[-1];
+    my $tx = $ua->get($url);
+    my $data = $tx->res->json;
 
-  my $data    = $tx->res->json;
-  my @columns = keys %{$data};
-  my $etag    = $tx->res->headers->etag;
+    return if $data->{code} and $orchestrate->_error($data->{code});
+    my $res_path = Mojo::Path->new( $tx->res->headers->content_location );
+    my $res_ref  = @{ $res_path->parts }[-1];
 
-  return Orchestrate::Collection::Result->new(
-    orchestrate  => $orchestrate,
-    collection   => $self,
-    key          => $key,
-    ref          => $res_ref,
-    data         => $data,
-    etag         => $etag,
-    column_names => \@columns,
-  );
 
+    my @columns = keys %{$data};
+    my $etag    = $tx->res->headers->etag;
+
+    return Orchestrate::Collection::Result->new(
+        orchestrate  => $orchestrate,
+        collection   => $self,
+        key          => $key,
+        ref          => $res_ref,
+        data         => $data,
+        etag         => $etag,
+        column_names => \@columns,
+    );
 }
 
 sub search {
-  my ($self, $args) = @_;
+    my ( $self, $args ) = @_;
+    my $orchestrate = $self->orchestrate;
+
+
+    my $url = $self->url->clone;
+    $url->path( $self->name );
+    $url->query( query => $args );
+
+    my $ua   = $orchestrate->ua;
+    my $data = $ua->get($url)->res->json;
+
+    my @columns = keys %{ $data->{results}->[0]->{value} };
+    my $total   = $data->{total_count};
+    my $next    = $data->{next};
+
+    return Orchestrate::Collection::ResultSet->new(
+        orchestrate  => $orchestrate,
+        collection   => $self,
+        data         => $data->{results},
+        column_names => \@columns,
+        total        => $total,
+        next_url     => $next
+    );
+
+}
+# If key is supplied, create will only create if key does not exist
+
+sub create {
+  my ( $self, $key, $data ) = @_;
   my $orchestrate = $self->orchestrate;
 
-
+  my $ua  = $orchestrate->ua;
   my $url = $self->url->clone;
-  $url->path($self->name);
-  $url->query(query => $args);
 
-  my $ua = $orchestrate->ua;
-  my $data    = $ua->get($url)->res->json;
+  my $method;
+  if (ref $key and !$data) {
+    $method = 'post';
+    $data = $key;
+  }
+  elsif ( $key and ref $data ) {
+    $method = 'put';
+    croak qq{$key already exists in collection} if $self->find($key);
+    push @{$url->path}, $key;
+  }
+  else {
+    return;
+  }
 
-  my @columns = keys %{$data->{results}->[0]->{value}};
-  my $total   = $data->{total_count};
-  my $next    = $data->{next};
+  my $tx  = $ua->build_tx(
+    $method => $url => { 'Content-Type' => 'application/json' } => json => $data
+  );
 
-  return Orchestrate::Collection::ResultSet->new(
-    orchestrate  => $orchestrate,
-    collection   => $self,
-    data         => $data->{results},
-    column_names => \@columns,
-    total        => $total,
-    next_url     => $next
+  $tx = $ua->start($tx);
+
+  say $tx->res->headers->to_string;
+  my $res_path = Mojo::Path->new( $tx->res->headers->location );
+  my ( $res_key, $res_ref ) = ( @{ $res_path->parts } )[ 2, 4 ];
+
+  return Orchestrate::Collection::Relationship->new(
+      orchestrate => $orchestrate,
+      collection  => $self,
+      key         => $res_key,
+      ref         => $res_ref
   );
 
 }
 
-# Returns a head that looks like:
-# HTTP/1.1 201 Created
-# Content-Type: application/json
-# Date: Mon, 16 Jun 2014 17:57:07 GMT
-# ETag: "82eafab14dc84ed3"
-# Location: /v0/collection/035ab997adffe604/refs/82eafab14dc84ed3
-# X-ORCHESTRATE-REQ-ID: a1feaa00-f57f-11e3-a294-0e490195c851
-# transfer-encoding: chunked
-# Connection: keep-alive
+sub update {
+  my ($self, $key, $data, $ref) = @_;
 
-sub create {
-  my ($self, $data) = @_;
+  my $orchestrate = $self->orchestrate;
+  my $ua  = $orchestrate->ua;
+  my $url = $self->url->clone;
 
-  # my $orchestrate = $self->orchestrate;
+  push @{$url->path}, $key;
 
-  # my $ua  = $orchestrate->ua;
-  # my $url = $self->url->clone;
-  # my $tx = $ua->post($url => {'Content-Type' => 'application/json'} => json => $data);
+  my $tx = $ua->build_tx(
+    PUT => $url => {'Content-Type' => 'application/json'} => json => $data
+  );
+
+  if ($ref and $ref eq 'false' ) {
+    $tx->req->headers->add('If-None-Match' => '*');
+  }
+  elsif ($ref) {
+    $tx->req->headers->add('If-Match' => "\"$ref\"");
+  }
+
+  $tx = $ua->start($tx);
+
+  say $tx->res->headers->to_string;
+
+  # my ($res_key, $res_ref) = (split('/', $tx->res->headers->location))[3, 5];
 
   # return Orchestrate::Collection::Relationship->new(
   #   orchestrate => $orchestrate,
@@ -92,45 +143,20 @@ sub create {
 
 }
 
-# sub update_or_create {
-#   my ($self, $key, $data, $ref) = @_;
-#   my $orchestrate = $self->orchestrate;
+sub find_or_create {
 
-#   my $ua  = $orchestrate->ua;
-#   my $url = $self->url->clone;
+}
 
-#   my $method = 'post';
+sub update_or_create {
 
-#   if (ref $data) {
-#     $method = 'put';
-#     $url->path($key);
-#   }
+}
 
-#   my $tx = $ua->build_tx(
-#     $method => $url => {'Content-Type' => 'application/json'},
-#     json    => $data
-#   );
+sub create_all {
 
-#   $ref ?
-#   if ($ref and $ref eq 'false' and $method eq 'put') {
-#     $tx->req->headers->add('If-None-Match' => '*');
-#   }
-#   elsif ($ref and $method eq 'put') {
-#     $tx->req->headers->add('If-Match' => "\"$ref\"");
-#   }
+}
+sub update_all {
 
-#   $tx = $ua->start($tx);
-
-#   my ($res_key, $res_ref) = (split('/', $tx->res->headers->location))[3, 5];
-
-#   return Orchestrate::Collection::Relationship->new(
-#     orchestrate => $orchestrate,
-#     collection  => $self,
-#     key         => $res_key,
-#     ref         => $res_ref
-#   );
-
-# }
+}
 
 # sub delete {
 #   my ($self, $key, $purge, $ref) = (shift, shift, shift, shift);
@@ -148,7 +174,7 @@ sub create {
 
 # }
 
-sub get_related {
+    sub get_related {
 
 }
 
