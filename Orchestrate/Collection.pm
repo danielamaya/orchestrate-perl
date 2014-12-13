@@ -75,36 +75,30 @@ sub create {
   my $ua  = $orchestrate->ua;
   my $url = $self->url->clone;
 
-  my $method;
+  my $tx;
   if (ref $key and !$data) {
-    $method = 'post';
-    $data = $key;
+    $tx = $ua->build_tx(POST => $url => json => $key);
   }
   elsif ( $key and ref $data ) {
-    $method = 'put';
-    croak qq{$key already exists in collection} if $self->find($key);
     push @{$url->path}, $key;
+    $tx = $ua->build_tx(PUT => $url => { 'If-None-Match' => '"*"' } => json => $data);
   }
   else {
     return;
   }
 
-  my $tx  = $ua->build_tx(
-    $method => $url => { 'Content-Type' => 'application/json' } => json => $data
-  );
-
   $tx = $ua->start($tx);
 
-  say $tx->res->headers->to_string;
-  my $res_path = Mojo::Path->new( $tx->res->headers->location );
-  my ( $res_key, $res_ref ) = ( @{ $res_path->parts } )[ 2, 4 ];
+  croak $tx->success;
+  # my $res_path = Mojo::Path->new( $tx->res->headers->location );
+  # my ( $res_key, $res_ref ) = ( @{ $res_path->parts } )[ 2, 4 ];
 
-  return Orchestrate::Collection::Relationship->new(
-      orchestrate => $orchestrate,
-      collection  => $self,
-      key         => $res_key,
-      ref         => $res_ref
-  );
+  # return Orchestrate::Collection::Relationship->new(
+  #     orchestrate => $orchestrate,
+  #     collection  => $self,
+  #     key         => $res_key,
+  #     ref         => $res_ref
+  # );
 
 }
 

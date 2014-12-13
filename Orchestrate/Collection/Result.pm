@@ -7,6 +7,10 @@ use Data::Dumper;
 
 has [qw(orchestrate collection data key ref etag column_names)];
 
+sub update {
+
+}
+
 sub get_related {
   return Orchestrate::Collection::Relationship->new(
     orchestrate => $_[0]->orchestrate,
@@ -14,6 +18,14 @@ sub get_related {
     key => $_[0]->key,
     kinds => $_[1]
   )->get_related;
+}
+
+sub create_related {
+
+}
+
+sub delete_related {
+
 }
 sub columns {
   return @{shift->column_names};
