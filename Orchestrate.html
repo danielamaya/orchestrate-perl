@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:damaya@damaya-dev.nonet" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#METHODS">METHODS</a>
+    <ul>
+      <li><a href="#new">new</a></li>
+      <li><a href="#create_collection-name">create_collection($name)</a></li>
+      <li><a href="#delete_collection-name">delete_collection($name)</a></li>
+      <li><a href="#collection-name">collection($name)</a></li>
+    </ul>
+  </li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</a></li>
+  <li><a href="#POD-ERRORS">POD ERRORS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Orchestrate - Pure Perl, non-blocking, Orchestrate.io client.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>  use Orchestrate;
+
+  # Create an orchestrate object
+  my $orchestrate = Orchestrate-&gt;new(
+    secret   =&gt; &#39;api-key&#39;,
+    base_url =&gt; &#39;https://api.aws-us-east-1.orchestrate.io/v0/&#39;
+  )
+
+  $orchestrate-&gt;create_collection(&#39;name&#39;);
+  $orchestrate-&gt;delete_collection(&#39;name&#39;);
+
+  # Return an Orchestrate::Collection object to interface with users collection
+  my $users = $orchestrate-&gt;collection(&#39;users&#39;);
+
+  # Find all keys starting with g in users collection
+  # Returns an Orchestrate::Collection::Resultset Object
+  my $rs = $users-&gt;search(&#39;g&#39;);
+
+  # For each iteration of the loop, $data is an
+  # Orchestrate::Collection::Result object to that result
+  while (my $data = $rs-&gt;next) {
+    say $rs-&gt;key;
+    say $rs-&gt;ref;
+    say Dumper $rs-&gt;data;
+
+    $rs-&gt;update(data =&gt; { foo =&gt; &#39;bar&#39;, boo =&gt; [&#39;baz&#39;, &#39;biz&#39;] });
+  }</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><a>Orchestrate</a> is a Perl client to the Orchestrate API. See <a href="https://orchestrate.io/docs/apiref">https://orchestrate.io/docs/apiref</a> for Orchestrate&#39;s API documentation.</p>
+
+<h1 id="METHODS">METHODS</h1>
+
+<h2 id="new">new</h2>
+
+<p>Create a new orchestrate object. This will authenticate to Orchestrate.io API and die on failure.</p>
+
+<p>Accepts the following parameters:</p>
+
+<dl>
+
+<dt id="secret-api_key">secret =&gt; $api_key</dt>
+<dd>
+
+<p>The Orchestrate.io API key to use for requests. This parameter is required.</p>
+
+</dd>
+<dt id="base_url-url">base_url =&gt; $url</dt>
+<dd>
+
+<p>The base_url to use for requests.</p>
+
+</dd>
+</dl>
+
+<h2 id="create_collection-name">create_collection($name)</h2>
+
+<p>Creates a new collection on Orchestrate.</p>
+
+<h2 id="delete_collection-name">delete_collection($name)</h2>
+
+<p>Deletes an entire collection and all contents.</p>
+
+<h2 id="collection-name">collection($name)</h2>
+
+<p>Returns an <a>Orchestrate::Collection</a> object.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="http://orchestrate.io">http://orchestrate.io</a>, <a>Mojolicious::Guides</a>, <a href="http://mojolicio.us">http://mojolicio.us</a>.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Daniel Amaya, <code>damaya@cpan.org</code></p>
+
+<h1 id="COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</h1>
+
+<p>Copyleft (C) 2014, Nobody.</p>
+
+<p>This program is free software, you can redistribute it and/or modify it under the terms of the GNU GPLv3.</p>
+
+<h1 id="POD-ERRORS">POD ERRORS</h1>
+
+<p>Hey! <b>The above document had some coding errors, which are explained below:</b></p>
+
+<dl>
+
+<dt id="Around-line-169">Around line 169:</dt>
+<dd>
+
+<p>You forgot a &#39;=back&#39; before &#39;=head2&#39;</p>
+
+</dd>
+</dl>
+
+
+</body>
+
+</html>
+
+

@@ -81,7 +81,7 @@ sub search {
 }
 
 # If key is supplied, create will only create if key does not exist
-# $->create('ass', json => {},  )
+# $->create('ass', json => {}, ref => 'asdfadsf');
 sub create {
   my $self = shift;
 
@@ -90,6 +90,7 @@ sub create {
   my $ua  = $orchestrate->ua;
   my $url = $self->url->clone;
 
+  if ( $_[0] )
   my $tx;
   if (@_ > 1) {
     $url->path(shift);
@@ -233,7 +234,7 @@ sub get_event {
   my @columns = keys %{$data->{results}->[0]->{value}};
   my $total   = $data->{total_count};
 
-  return Orchestrate::Collection::ResultSet->new(
+  return Orchestrate::Collection::Event->new(
     orchestrate  => $orchestrate,
     collection   => $self,
     data         => $data,
@@ -255,15 +256,97 @@ sub delete_event {
 
 }
 
+sub list_events {
+
+}
+
 sub get_related {
+  my ($self,$key,%opts) = @_;
+
+  return unless $key;
+  return unless $opts{kinds} and ref $opts{kinds} eq 'ARRAY';
+
+  my $orchestrate = $self->orchestrate;
+  my $url         = $self->url->clone;
+
+  $url->path($key.'/relations/');
+
+  for ( @{ $opts{kinds} } ) {
+    push @{$url->path}, $_;
+  }
+  $url->path->trailing_slash(0);
+  delete $opts{kinds};
+
+  for ( keys %opts ) {
+    $url->query({$_ => $opts{$_}});
+  }
+
+  my $ua   = $orchestrate->ua;
+  my $tx   = $ua->get($url);
+  my $data = $tx->res->json;
+
+  croak $data->{message} unless $tx->success;
+
+  my @columns = keys %{$data->{results}->[0]->{value}};
+  my $total   = $data->{count};
+
+  return Orchestrate::Collection::ResultSet->new(
+    orchestrate  => $orchestrate,
+    collection   => $self,
+    data         => $data,
+    next_data    => $data,
+    column_names => \@columns,
+    total        => $total,
+  );
 
 }
 
 sub create_related {
+  my ($self,$key,%opts) = @_;
+
+  return unless $key;
+  return unless $opts{kind};
+  return unless $opts{to_collection};
+  return unless $opts{to_key};
+
+  my $orchestrate = $self->orchestrate;
+  my $url         = $self->url->clone;
+
+  $url->path($key.'/relation/');
+  $url->path($opts{kind}.'/'.$opts{to_collection}.'/'.$opts{to_key});
+
+  say $url;
+  my $ua   = $orchestrate->ua;
+  my $tx   = $ua->put($url);
+
+  croak $tx->res->json->{message} unless $tx->success;
+
+  return;
 
 }
 
 sub delete_related {
+  my ($self,$key,%opts) = @_;
+
+  return unless $key;
+  return unless $opts{kind};
+  return unless $opts{to_collection};
+  return unless $opts{to_key};
+
+  my $orchestrate = $self->orchestrate;
+  my $url         = $self->url->clone;
+
+  $url->path($key.'/relation/');
+  $url->path($opts{kind}.'/'.$opts{to_collection}.'/'.$opts{to_key});
+
+  $url->query(purge => 'true') if $opts{purge};
+
+  my $ua   = $orchestrate->ua;
+  my $tx   = $ua->delete($url);
+
+  croak $tx->res->json->{message} unless $tx->success;
+
+  return;
 
 }
 
@@ -276,3 +359,13 @@ sub delete_related {
 # }
 
 1;
+
+=encoding utf8
+
+=head1 NAME
+
+Orchestrate::Collection -
+
+=head1 SYNOPSIS
+
+  my $rs = $collection->search('Sa');

@@ -106,3 +106,91 @@ sub _error {
 }
 
 1;
+
+=encoding utf8
+
+=head1 NAME
+
+Orchestrate - Pure Perl, non-blocking, Orchestrate.io client.
+
+=head1 SYNOPSIS
+
+  use Orchestrate;
+
+  # Create an orchestrate object
+  my $orchestrate = Orchestrate->new(
+    secret   => 'api-key',
+    base_url => 'https://api.aws-us-east-1.orchestrate.io/v0/'
+  )
+
+  $orchestrate->create_collection('name');
+  $orchestrate->delete_collection('name');
+
+  # Return an Orchestrate::Collection object to interface with users collection
+  my $users = $orchestrate->collection('users');
+
+  # Find all keys starting with g in users collection
+  # Returns an Orchestrate::Collection::Resultset Object
+  my $rs = $users->search('g');
+
+  # For each iteration of the loop, $data is an
+  # Orchestrate::Collection::Result object to that result
+  while (my $data = $rs->next) {
+    say $rs->key;
+    say $rs->ref;
+    say Dumper $rs->data;
+
+    $rs->update(data => { foo => 'bar', boo => ['baz', 'biz'] });
+  }
+
+=head1 DESCRIPTION
+
+L<Orchestrate> is a Perl client to the Orchestrate API. See L<https://orchestrate.io/docs/apiref>
+for Orchestrate's API documentation.
+
+=head1 METHODS
+
+=head2 new
+
+Create a new orchestrate object. This will authenticate to Orchestrate.io API and die on failure.
+
+Accepts the following parameters:
+
+=over
+
+=item secret => $api_key
+
+The Orchestrate.io API key to use for requests. This parameter is required.
+
+=item base_url => $url
+
+The base_url to use for requests.
+
+=head2 create_collection($name)
+
+Creates a new collection on Orchestrate.
+
+=head2 delete_collection($name)
+
+Deletes an entire collection and all contents.
+
+=head2 collection($name)
+
+Returns an L<Orchestrate::Collection> object.
+
+=head1 SEE ALSO
+
+L<http://orchestrate.io>, L<Mojolicious::Guides>, L<http://mojolicio.us>.
+
+=head1 AUTHOR
+
+Daniel Amaya, C<damaya@cpan.org>
+
+=head1 COPYLEFT AND LICENSE
+
+Copyleft (C) 2014, Nobody.
+
+This program is free software, you can redistribute it and/or modify it under
+the terms of the GNU GPLv3.
+
+=cut
