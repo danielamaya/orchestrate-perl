@@ -4,7 +4,7 @@ use Mojo::Base -base;
 use Carp 'croak';
 use Data::Dumper;
 
-has [qw(orchestrate collection data key ref etag column_names)];
+has [qw(orchestrate collection data key ref etag timestamp ordinal column_names)];
 
 sub delete {
   my ($self, %opts) = @_;
