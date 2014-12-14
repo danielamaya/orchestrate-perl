@@ -17,16 +17,19 @@ sub find {
   my $url         = $self->url->clone;
 
   if (@_ > 1) {
-    push @{$url->path}, shift . '/ref/' . shift;
+    $url->path(shift . '/ref/' . shift);
   }
   elsif (@_) {
-    push @{$url->path}, shift;
+    $url->path(shift);
   }
   else {
     return;
   }
+
   my $tx   = $ua->get($url);
   my $data = $tx->res->json;
+
+  croak $data->{message} unless $tx->success;
 
   $self->error($data->{message}) and return $self unless $tx->success;
 
@@ -54,15 +57,14 @@ sub search {
   my $orchestrate = $self->orchestrate;
 
   my $url = $self->url->clone;
-  $url->path($self->name);
+
   $url->query(query => shift);
 
   my $ua   = $orchestrate->ua;
-  my $data = $ua->get($url)->res->json;
+  my $tx   = $ua->get($url);
+  my $data = $tx->res->json;
 
-  $self->error('The requested items could not be found.') and return $self
-    if $data->{count} == 0;
-
+  croak $data->{message} unless $tx->success;
 
   my @columns = keys %{$data->{results}->[0]->{value}};
   my $total   = $data->{total_count};
@@ -79,7 +81,7 @@ sub search {
 }
 
 # If key is supplied, create will only create if key does not exist
-
+# $->create('ass', json => {},  )
 sub create {
   my $self = shift;
 
@@ -90,7 +92,7 @@ sub create {
 
   my $tx;
   if (@_ > 1) {
-    push @{$url->path}, shift;
+    $url->path(shift);
     $tx = $ua->build_tx(
       PUT => $url => {'If-None-Match' => '"*"'} => json => shift);
   }
@@ -104,74 +106,141 @@ sub create {
 
   $tx = $ua->start($tx);
 
-  croak 'Could not create record: ' . $tx->res->json->{message}
-    unless $tx->success;
+  croak $tx->res->json->{message} unless $tx->success;
 
-  my $res_path = Mojo::Path->new($tx->res->headers->location);
-  my ($res_key, $res_ref) = (@{$res_path->parts})[2, 4];
+  my $path = Mojo::Path->new($tx->res->headers->location);
+  my ($key, $ref) = (@{$path->parts})[2, 4];
 
   return Orchestrate::Collection::Result->new(
     orchestrate => $orchestrate,
     collection  => $self,
-    key         => $res_key,
-    ref         => $res_ref,
+    key         => $key,
+    ref         => $ref,
     etag        => $tx->res->headers->etag,
   );
 
 }
 
-sub update {
-  my ($self, $key, $data, $ref) = @_;
+sub update_or_create {
+  my $self = shift;
 
   my $orchestrate = $self->orchestrate;
   my $ua          = $orchestrate->ua;
   my $url         = $self->url->clone;
 
-  push @{$url->path}, $key;
+  $url->path(shift);
 
-  my $tx = $ua->build_tx(
-    PUT => $url => {'Content-Type' => 'application/json'} => json => $data);
+  my $tx = $ua->put(json => shift);
 
-  if ($ref and $ref eq 'false') {
-    $tx->req->headers->add('If-None-Match' => '*');
-  }
-  elsif ($ref) {
-    $tx->req->headers->add('If-Match' => "\"$ref\"");
+  if (@_) {
+    $tx->req->headers->add('If-Match' => '"'.shift.'"');
   }
 
   $tx = $ua->start($tx);
 
-  say $tx->res->headers->to_string;
+  croak $tx->res->json->{message} unless $tx->success;
 
-  # my ($res_key, $res_ref) = (split('/', $tx->res->headers->location))[3, 5];
+  my $path = Mojo::Path->new($tx->res->headers->location);
+  my ($key, $ref) = (@{$path->parts})[2, 4];
 
-  # return Orchestrate::Collection::Relationship->new(
-  #   orchestrate => $orchestrate,
-  #   collection  => $self,
-  #   key         => $res_key,
-  #   ref         => $res_ref
-  # );
+  return Orchestrate::Collection::Result->new(
+    orchestrate => $orchestrate,
+    collection  => $self,
+    key         => $key,
+    ref         => $ref,
+    etag        => $tx->res->headers->etag,
+  );
+}
+
+sub delete {
+  my ($self, $key, %opts) = @_;
+
+  return unless $key;
+
+  my $orchestrate = $self->orchestrate;
+  my $ua          = $orchestrate->ua;
+  my $url         = $self->url->clone;
+
+  $url->path($key);
+
+  $url->query(purge => 'true') if ( $opts{purge} );
+  my $tx = $ua->build_tx(DELETE => $url);
+  $tx->req->headers->add('If-Match' => '"'.$opts{ref}.'"') if $opts{ref};
+
+  $tx = $ua->start($tx);
+
+  croak $tx->res->json->{message} unless $tx->success;
+
+  return $self;
 
 }
 
-# sub delete {
-#   my ($self, $key, $purge, $ref) = (shift, shift, shift, shift);
-#   my $orchestrate = $self->orchestrate;
+sub list_refs {
+  my ($self,$key,%opts) = @_;
 
-#   my $ua = $orchestrate->ua;
-#   my $url
-#     = Mojo::URL->new($orchestrate->base_url)->userinfo($orchestrate->secret);
+  my $orchestrate = $self->orchestrate;
+  my $url         = $self->url->clone;
 
-#   $url->path($self->name . '/' . $key);
-#   $url->query(purge => 'true') if $purge;
+  return unless $key;
 
 
-#   return $ua->delete($url);
+  $url->path($key.'/refs/');
 
-# }
+  for ( keys %opts ) {
+    $url->query({$_ => $opts{$_}});
+  }
+
+
+  my $ua   = $orchestrate->ua;
+  my $tx   = $ua->get($url);
+  my $data = $tx->res->json;
+
+  croak $data->{message} unless $tx->success;
+
+  my @columns = keys %{$data->{results}->[0]->{value}};
+  my $total   = $data->{total_count};
+
+  return Orchestrate::Collection::ResultSet->new(
+    orchestrate  => $orchestrate,
+    collection   => $self,
+    data         => $data,
+    next_data    => $data,
+    column_names => \@columns,
+    total        => $total,
+  );
+}
 
 sub get_event {
+  my ($self,$key,%opts) = @_;
 
+  return unless $key;
+
+  my $orchestrate = $self->orchestrate;
+  my $url         = $self->url->clone;
+
+  $url->path($key.'/events/');
+
+  for ( keys %opts ) {
+    $url->query({$_ => $opts{$_}});
+  }
+
+  my $ua   = $orchestrate->ua;
+  my $tx   = $ua->get($url);
+  my $data = $tx->res->json;
+
+  croak $data->{message} unless $tx->success;
+
+  my @columns = keys %{$data->{results}->[0]->{value}};
+  my $total   = $data->{total_count};
+
+  return Orchestrate::Collection::ResultSet->new(
+    orchestrate  => $orchestrate,
+    collection   => $self,
+    data         => $data,
+    next_data    => $data,
+    column_names => \@columns,
+    total        => $total,
+  );
 }
 
 sub create_event {
@@ -183,22 +252,6 @@ sub update_event {
 }
 
 sub delete_event {
-
-}
-
-sub find_or_create {
-
-}
-
-sub update_or_create {
-
-}
-
-sub create_all {
-
-}
-
-sub update_all {
 
 }
 
@@ -214,11 +267,12 @@ sub delete_related {
 
 }
 
-sub get_refs {
-  my ($self, %opts) = shift;
+# sub create_bulk {
 
-  croak qq{Key required.} unless ($opts{key});
+# }
 
-}
+# sub update_bulk {
+
+# }
 
 1;

@@ -29,7 +29,7 @@ sub collection {
   return Orchestrate::Collection->new(
     orchestrate => $self,
     name => $name,
-    url => $self->secret_url->clone->path($name)
+    url => $self->secret_url->clone->path($name.'/')
   );
 
 }
